@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class StickyBall : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class StickyBall : MonoBehaviour
 
     public GameObject cameraReference;
     float distanceToCamera = 5;
+
+    public Text massText;
 
     public GameObject tiny;
     bool tinyUnlocked = false;
@@ -164,7 +167,7 @@ public class StickyBall : MonoBehaviour
             //becomes child so it stays with the sticky ball
             other.transform.SetParent(this.transform);
 
-            print("Size of ball: " + sizeOfBall.ToString());   //FOR DEBUGGING PURPOSES
+            massText.text = "Mass: " + sizeOfBall.ToString() + "m";
         }
     }
 }
