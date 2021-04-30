@@ -8,6 +8,7 @@ public class StickyBall : MonoBehaviour
     float x = 0;
     float z = 0;
     Vector2 unitV2;
+    float sizeOfBall;
 
     public GameObject cameraReference;
     float distanceToCamera = 5;
@@ -37,5 +38,21 @@ public class StickyBall : MonoBehaviour
 
         //set camera position behind the ball based on rotation
         cameraReference.transform.position = new Vector3(-unitV2.x * distanceToCamera, distanceToCamera, -unitV2.y * distanceToCamera) + this.transform.position;
+    }
+
+    //pick up sticky objects
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("Sticky"))
+        {
+            //grow the sticky ball
+            transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+            sizeOfBall += 0.01f;
+            distanceToCamera += 0.08f;
+            other.enabled = false;  //collected sticky items can't pick up new items
+
+            //becomes child so it stays with the sticky ball
+            other.transform.SetParent(this.transform);
+        }
     }
 }
