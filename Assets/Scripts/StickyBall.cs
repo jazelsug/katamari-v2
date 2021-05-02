@@ -56,11 +56,17 @@ public class StickyBall : MonoBehaviour
         UnlockPickupSizes();
     }
 
+    public float tinyThreshold = 1.0f;
+    public float smallThreshold = 1.5f;
+    public float mediumThreshold = 4.0f;
+    public float bigThreshold = 8.0f;
+    public float hugeThreshold = 10.0f;
+
     void UnlockPickupSizes()
     {
         if(tinyUnlocked == false)
         {
-            if (sizeOfBall >= 1)
+            if (sizeOfBall >= tinyThreshold)
             {
                 tinyUnlocked = true;
                 //iterate through all children in the size category
@@ -73,7 +79,7 @@ public class StickyBall : MonoBehaviour
         }
         else if (smallUnlocked == false)
         {
-            if (sizeOfBall >= 1.5f) //CAN CHANGE VALUES IS NEEDED
+            if (sizeOfBall >= smallThreshold)
             {
                 smallUnlocked = true;
                 //iterate through all children in the size category
@@ -86,7 +92,7 @@ public class StickyBall : MonoBehaviour
         }
         else if (mediumUnlocked == false)
         {
-            if (sizeOfBall >= 4.0f) //CAN CHANGE VALUES IF NEEDED
+            if (sizeOfBall >= mediumThreshold)
             {
                 mediumUnlocked = true;
                 //iterate through all children in the size category
@@ -99,7 +105,7 @@ public class StickyBall : MonoBehaviour
         }
         else if (bigUnlocked == false)
         {
-            if (sizeOfBall >= 8.0f) //CAN CHANGE VALUES IF NEEDED
+            if (sizeOfBall >= bigThreshold)
             {
                 bigUnlocked = true;
                 //iterate through all children in the size category
@@ -112,7 +118,7 @@ public class StickyBall : MonoBehaviour
         }
         else if (hugeUnlocked == false)
         {
-            if (sizeOfBall >= 10.0f)    //CAN CHANGE VALUES IF NEEDED
+            if (sizeOfBall >= hugeThreshold)
             {
                 hugeUnlocked = true;
                 //iterate through all children in the size category
@@ -163,6 +169,8 @@ public class StickyBall : MonoBehaviour
             //sizeOfBall += 0.01f;
             //distanceToCamera += 0.08f;
             other.enabled = false;  //collected sticky items can't pick up new items
+
+            print("Other transform: " + other.transform.position.ToString());   //DEBUG PURPOSES
 
             //becomes child so it stays with the sticky ball
             other.transform.SetParent(this.transform);
