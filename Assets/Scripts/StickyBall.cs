@@ -175,7 +175,7 @@ public class StickyBall : MonoBehaviour
             //becomes child so it stays with the sticky ball
             other.transform.SetParent(this.transform);
 
-            massText.text = "Mass: " + sizeOfBall.ToString() + "m";
+            massText.text = "Mass: " + string.Format("{0:0.00}", sizeOfBall) + "m"; //"Mass: " + sizeOfBall.ToString() + "m";
         }
     }
 }
