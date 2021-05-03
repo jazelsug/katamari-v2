@@ -5,11 +5,18 @@ using UnityEngine.UI;
 
 public class StickyBall : MonoBehaviour
 {
+    static public StickyBall inst;
+
+    private void Awake()
+    {
+        inst = this;
+    }
+
     public float facingAngle = 0;
     float x = 0;
     float z = 0;
     Vector2 unitV2;
-    float sizeOfBall = 1;
+    public float sizeOfBall = 1;
 
     public GameObject cameraReference;
     float distanceToCamera = 5;

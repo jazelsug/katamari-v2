@@ -8,10 +8,15 @@ public class Timer : MonoBehaviour
     private bool timerIsRunning = false;
     public float timeRemaining = 60;    //60 seconds
 
+    //public GameObject massPanel;
+    //public GameObject timerPanel;
+    //public GameObject endPanel;
+
     // Start is called before the first frame update
     void Start()
     {
         timerIsRunning = true;
+        //endPanel.SetActive(false);  //hide end panel
     }
 
     // Update is called once per frame
@@ -27,6 +32,16 @@ public class Timer : MonoBehaviour
             //timer ran out
             timeRemaining = 0;
             timerIsRunning = false;
+
+            //set text of end level
+            //endPanel.GetComponent<Text>().text = "Your ball reached a size of:\n" + string.Format("{0:0.00}", StickyBall.inst.sizeOfBall) + "m";
+
+            //get rid of mass and timer UI
+            //massPanel.SetActive(false);
+            //timerPanel.SetActive(false);
+
+            //display end level UI
+            //endPanel.SetActive(true);
         }
         //update timeText
         DisplayTime(timeRemaining);
