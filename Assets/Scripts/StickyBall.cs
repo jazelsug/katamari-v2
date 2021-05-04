@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR;
 
 public class StickyBall : MonoBehaviour
 {
@@ -34,19 +35,47 @@ public class StickyBall : MonoBehaviour
     public GameObject huge;
     bool hugeUnlocked = false;
 
+    private List<InputDevice> leftHandDevice = new List<InputDevice>();
+    private List<InputDevice> rightHandDevice = new List<InputDevice>();
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //var leftHandDevice = new List<UnityEngine.XR.InputDevice>();
+        InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, leftHandDevice);
+        //var rightHandDevice = new List<UnityEngine.XR.InputDevice>();
+        InputDevices.GetDevicesAtXRNode(XRNode.RightHand, rightHandDevice);
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
+         Vector2 movementVector;
+         if (leftHands[0].TryGetFeatureValue(CommonUsages.primary2DAxis, out movementVector))
+         {
+             // Shows that value is always zero
+             print($"Left Joystick Values: {movementVector}");
+ 
+             if (Mathf.Abs(movementVector.x) >= 0.2f || Mathf.Abs(movementVector.y) >= 0.2f)
+             {
+                 Move(movementVector);
+             }
+         }
+         */
+
+        Vector2 movementVector;
+        if (leftHandDevice[0].TryGetFeatureValue(CommonUsages.primary2DAxis, out movementVector))
+        {
+            x = movementVector.x * Time.deltaTime * -100;
+            z = movementVector.y * Time.deltaTime * 500;
+        }
+        /*
         //user control - WILL LIKELY CHANGE FOR VR
         x = Input.GetAxis("Horizontal") * Time.deltaTime * -100;
         z = Input.GetAxis("Vertical") * Time.deltaTime * 500;
-
+        */
         //facing angle
         facingAngle += x;
         unitV2 = new Vector2(Mathf.Cos(facingAngle * Mathf.Deg2Rad), Mathf.Sin(facingAngle * Mathf.Deg2Rad));
