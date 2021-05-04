@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR;
+using UnityEngine.SpatialTracking;
 
 public class StickyBall : MonoBehaviour
 {
@@ -38,6 +39,8 @@ public class StickyBall : MonoBehaviour
     private List<InputDevice> leftHandDevice = new List<InputDevice>();
     private List<InputDevice> rightHandDevice = new List<InputDevice>();
 
+    private List<InputDevice> headMonitor = new List<InputDevice>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +48,8 @@ public class StickyBall : MonoBehaviour
         InputDevices.GetDevicesAtXRNode(XRNode.LeftHand, leftHandDevice);
         //var rightHandDevice = new List<UnityEngine.XR.InputDevice>();
         InputDevices.GetDevicesAtXRNode(XRNode.RightHand, rightHandDevice);
+
+        InputDevices.GetDevicesAtXRNode(XRNode.Head, headMonitor);
 
     }
 
@@ -88,6 +93,8 @@ public class StickyBall : MonoBehaviour
 
         //set camera position behind the ball based on rotation
         cameraReference.transform.position = new Vector3(-unitV2.x * distanceToCamera, distanceToCamera, -unitV2.y * distanceToCamera) + this.transform.position;
+
+        //TrackedPoseDriver.gameObject.transform.position = new Vector3(-unitV2.x * distanceToCamera, distanceToCamera, -unitV2.y * distanceToCamera) + this.transform.position;
 
         UnlockPickupSizes();
     }
