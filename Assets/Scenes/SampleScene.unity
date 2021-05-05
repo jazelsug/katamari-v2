@@ -13531,13 +13531,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1003554046}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.65, z: 6.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1188077673}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1011844737
 PrefabInstance:
@@ -15817,7 +15817,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   facingAngle: 0
   sizeOfBall: 1
-  cameraReference: {fileID: 963194225}
+  cameraReference: {fileID: 1003554046}
   massText: {fileID: 798665960}
   tiny: {fileID: 1783102627}
   small: {fileID: 1126222905}
@@ -20389,7 +20389,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1569860245
 PrefabInstance:
